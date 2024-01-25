@@ -17,6 +17,11 @@ allprojects {
 	repositories {
 		mavenCentral()
 	}
+	dependencies {
+		implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+		implementation 'org.slf4j:slf4j-api:2.0.11'
+		compileOnly 'org.projectlombok:lombok:1.18.30'
+	}
 }
 
 subprojects {

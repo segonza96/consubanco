@@ -4,5 +4,6 @@ plugins {
 rootProject.name = 'retotecnico'
 include(':application:app-service')
 include(':infrastructure:entry-points:rest-web')
-
+include(':domain:UseCase')
+include (':domain:Model')
 
