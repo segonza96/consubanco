@@ -3,6 +3,7 @@ apply plugin: 'org.springframework.boot'
 dependencies {
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation(project(':infrastructure:entry-points:rest-web'))
+        implementation(project(':infrastructure:driven-adapters:postgresql'))
         implementation(project(':domain:UseCase'))
         implementation(project(':domain:Model'))
 }

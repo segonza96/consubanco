@@ -4,8 +4,8 @@ import jakarta.validation.constraints.Email;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
+import java.math.BigInteger;
+import java.time.OffsetDateTime;
 @Data
 @NoArgsConstructor
 public class Spend {
@@ -20,7 +20,7 @@ public class Spend {
     /**
      *  (obligatorio - solo números )
      */
-    private Integer phoneNumber;
+    private BigInteger phoneNumber;
     /**
      * (obligatorio - validar que sea un email )
      */
@@ -48,12 +48,12 @@ public class Spend {
     /**
      * (opcional - fecha )
      */
-    private Date initialDate;
+    private OffsetDateTime initialDate;
     /**
      * (opcional fecha )
      */
 
-    private Date endDate;
+    private OffsetDateTime endDate;
     /**
      * (pagado / pendiente )
      */
