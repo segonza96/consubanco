@@ -4,6 +4,7 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ValueOfEnumValidator implements ConstraintValidator<ValueOfEnum, CharSequence> {
     private Class<? extends Enum<?>> enumClass;
@@ -20,6 +21,7 @@ public class ValueOfEnumValidator implements ConstraintValidator<ValueOfEnum, Ch
 
         return Arrays.stream(enumClass.getEnumConstants())
                 .map(Enum::name)
+                .filter(names -> Objects.nonNull(value))
                 .anyMatch(nameEnum -> nameEnum.equalsIgnoreCase(value.toString()));
     }
 }

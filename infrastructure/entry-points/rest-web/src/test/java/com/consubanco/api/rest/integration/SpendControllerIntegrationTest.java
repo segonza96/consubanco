@@ -27,7 +27,6 @@ public class SpendControllerIntegrationTest extends BaseIntegrationTest {
                                         Map.entry("endDate", "must not be null"),
                                         Map.entry("name", "must not be blank"),
                                         Map.entry( "description", "must not be blank"),
-                                        Map.entry("state", "must not be null"),
                                         Map.entry("curp", "must not be blank"),
                                         Map.entry("rfc", "must not be blank"),
                                         Map.entry("email", "must not be blank"),
@@ -73,7 +72,7 @@ public class SpendControllerIntegrationTest extends BaseIntegrationTest {
                 .endDate(OffsetDateTime.of(
                         2024, 1, 26, 9, 10, 40,
                         50000, ZoneOffset.UTC))
-                .state(true)
+                .state("pagado")
                 .build();
     }
     public static SpendDto buildSpendDtoOK() {
@@ -92,7 +91,7 @@ public class SpendControllerIntegrationTest extends BaseIntegrationTest {
                 .endDate(OffsetDateTime.of(
                         2024, 1, 26, 9, 10, 40,
                         50000, ZoneOffset.UTC))
-                .state(true)
+                .state("pagado")
                 .build();
     }
 }
