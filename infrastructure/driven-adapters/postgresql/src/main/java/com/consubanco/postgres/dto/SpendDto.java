@@ -47,5 +47,5 @@ public class SpendDto {
     @Column(name = "end_date", nullable = false)
     private OffsetDateTime endDate;
     @Column(name = "state", nullable = false)
-    private Boolean state;
+    private String state;
 }

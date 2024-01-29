@@ -15,7 +15,8 @@ public class SpendUseCase {
     public Spend createSpend(Spend spend) {
         return spendRepository.save(spend);
     }
-    public String log() {
-        return "log of useCase";
+
+    public Spend updateStateSpend(String rfc, String state) {
+        return spendRepository.updateState(rfc, state);
     }
 }

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import java.util.Map;
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
+@ToString
 public class ErrorResponseDto<T> {
     private T errors;
     private String message;

@@ -1,6 +1,8 @@
 package com.consubanco.api.rest.exceptionhandler;
 
 import com.consubanco.api.rest.dto.ErrorResponseDto;
+import com.consubanco.exception.BadRequestException;
+import com.consubanco.exception.DatabaseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -24,10 +26,33 @@ public class ExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
+        LOGGER.error(String.format("Exception %s caught, message: %s", ex.getClass().getName(), ex.getLocalizedMessage()));
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(ErrorResponseDto.builder()
                         .errors(errors)
-                        .message(ex.getLocalizedMessage())
+                        .message("Invalid Request contract")
+                        .build());
+    }
+    @org.springframework.web.bind.annotation.ExceptionHandler(BadRequestException.class)
+    public
+    ResponseEntity<ErrorResponseDto> handleBadRequestExceptions(BadRequestException ex) {
+
+        LOGGER.error(String.format("Exception %s caught, message: %s", ex.getClass().getName(), ex.getLocalizedMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponseDto.builder()
+                        .errors(ex.getMessage())
+                        .message("Invalid Request contract")
+                        .build());
+    }
+    @org.springframework.web.bind.annotation.ExceptionHandler(DatabaseException.class)
+    public
+    ResponseEntity<ErrorResponseDto> handleDatabaseExceptions(DatabaseException ex) {
+
+        LOGGER.error(String.format("Exception %s caught, message: %s", ex.getClass().getName(), ex.getLocalizedMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponseDto.builder()
+                        .errors(ex.getMessage())
+                        .message("Invalid Request contract")
                         .build());
     }
 }

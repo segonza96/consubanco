@@ -1,16 +1,24 @@
 package com.consubanco.api.rest.dto;
 
+import com.consubanco.entity.State;
+import com.consubanco.entity.validators.ValueOfEnum;
+import com.consubanco.entity.validators.ValueOfEnumValidator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
 import java.time.OffsetDateTime;
+
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class SpendDto {
     @NotBlank
     @JsonProperty("name")
@@ -43,7 +51,9 @@ public class SpendDto {
     @NotNull
     @JsonProperty("end_date")
     private OffsetDateTime endDate;
-    @NotNull
+    @NotBlank
     @JsonProperty("state")
-    private Boolean state;
+    @ValueOfEnum(enumClass = State.class)
+    private String state;
+
 }

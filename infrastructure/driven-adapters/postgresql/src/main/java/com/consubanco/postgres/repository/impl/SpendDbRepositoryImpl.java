@@ -38,4 +38,18 @@ public class SpendDbRepositoryImpl implements SpendDbPort {
            throw new DatabaseException(errorMessage, exception);
        }
     }
+
+    @Override
+    public Spend updateState(String rfc, String state) {
+        try {
+            return Optional.ofNullable(rfc)
+                    .map(dto -> spendJPARepository.updateState(rfc, state))
+                    .map(savedDto -> mapper.toDomainEntity(savedDto))
+                    .orElseThrow();
+        }catch (Exception exception) {
+            var errorMessage = String.format("Error caught trying to update spend state on DB. %s", exception.getLocalizedMessage());
+            log.error(errorMessage);
+            throw new DatabaseException(errorMessage, exception);
+        }
+    }
 }

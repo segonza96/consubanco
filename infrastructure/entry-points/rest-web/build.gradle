@@ -3,5 +3,9 @@ dependencies {
     implementation(project(":domain:UseCase"))
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    testImplementation project(path: ':application:app-service')
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    testImplementation('com.h2database:h2:1.4.200')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    implementation('org.springframework.cloud:spring-cloud-contract-wiremock:4.1.0')
 }
